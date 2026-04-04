@@ -8,7 +8,7 @@ description: "Task list template for feature implementation"
 **Input**: Design documents from `/specs/[###-feature-name]/`
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
-**Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
+**Tests**: The examples below include test tasks. Automated tests are OPTIONAL unless the feature specification requires them, but validation tasks are mandatory for every user story.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
@@ -20,10 +20,11 @@ description: "Task list template for feature implementation"
 
 ## Path Conventions
 
-- **Single project**: `src/`, `tests/` at repository root
-- **Web app**: `backend/src/`, `frontend/src/`
-- **Mobile**: `api/src/`, `ios/src/` or `android/src/`
-- Paths shown below assume single project - adjust based on plan.md structure
+- **Frontend**: `frontend/` for Angular application code
+- **Services**: `services/<service-name>/` for Spring Boot services
+- **Deployment**: `deploy/k8s/` for Kubernetes manifests and `deploy/istio/` for mesh policy
+- **Verification**: `tests/integration/` or `tests/verification/` for scripts and checks
+- Paths shown below are examples - adjust to the concrete plan.md structure
 
 <!-- 
   ============================================================================
@@ -48,9 +49,10 @@ description: "Task list template for feature implementation"
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create project structure per implementation plan
-- [ ] T002 Initialize [language] project with [framework] dependencies
-- [ ] T003 [P] Configure linting and formatting tools
+- [ ] T001 Create frontend, services, deploy, and verification structure per implementation plan
+- [ ] T002 Initialize Angular frontend and Spring Boot service scaffolds
+- [ ] T003 [P] Configure local Kubernetes and Istio prerequisites
+- [ ] T004 [P] Configure linting, formatting, and local run scripts
 
 ---
 
@@ -62,12 +64,11 @@ description: "Task list template for feature implementation"
 
 Examples of foundational tasks (adjust based on your project):
 
-- [ ] T004 Setup database schema and migrations framework
-- [ ] T005 [P] Implement authentication/authorization framework
-- [ ] T006 [P] Setup API routing and middleware structure
-- [ ] T007 Create base models/entities that all stories depend on
-- [ ] T008 Configure error handling and logging infrastructure
-- [ ] T009 Setup environment configuration management
+- [ ] T005 Create Kubernetes namespace, config, and base deployment manifests
+- [ ] T006 [P] Enable Istio sidecar injection and ingress baseline
+- [ ] T007 [P] Setup service-to-service communication contracts
+- [ ] T008 Configure logging, metrics, and tracing baseline
+- [ ] T009 Setup environment and sample-data configuration management
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -86,14 +87,17 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
 - [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
 
+### Validation for User Story 1 (MANDATORY)
+
+- [ ] T012 [US1] Add verification script or runbook for the expected mesh behavior in tests/verification/[name].md
+
 ### Implementation for User Story 1
 
-- [ ] T012 [P] [US1] Create [Entity1] model in src/models/[entity1].py
-- [ ] T013 [P] [US1] Create [Entity2] model in src/models/[entity2].py
-- [ ] T014 [US1] Implement [Service] in src/services/[service].py (depends on T012, T013)
-- [ ] T015 [US1] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T016 [US1] Add validation and error handling
-- [ ] T017 [US1] Add logging for user story 1 operations
+- [ ] T013 [P] [US1] Implement Angular or API changes needed for the user journey
+- [ ] T014 [P] [US1] Implement Spring Boot service changes for the user journey
+- [ ] T015 [US1] Add Kubernetes manifest updates in deploy/k8s/
+- [ ] T016 [US1] Add Istio routing, security, or resiliency policy in deploy/istio/
+- [ ] T017 [US1] Add logging and telemetry updates for user story 1 operations
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -110,12 +114,16 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] T018 [P] [US2] Contract test for [endpoint] in tests/contract/test_[name].py
 - [ ] T019 [P] [US2] Integration test for [user journey] in tests/integration/test_[name].py
 
+### Validation for User Story 2 (MANDATORY)
+
+- [ ] T020 [US2] Add verification script or runbook for the expected mesh behavior in tests/verification/[name].md
+
 ### Implementation for User Story 2
 
-- [ ] T020 [P] [US2] Create [Entity] model in src/models/[entity].py
-- [ ] T021 [US2] Implement [Service] in src/services/[service].py
-- [ ] T022 [US2] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T023 [US2] Integrate with User Story 1 components (if needed)
+- [ ] T021 [P] [US2] Implement Angular or API changes for the user journey
+- [ ] T022 [P] [US2] Implement Spring Boot service changes for the user journey
+- [ ] T023 [US2] Add Kubernetes and Istio changes for the story
+- [ ] T024 [US2] Integrate with User Story 1 components (if needed)
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
@@ -129,14 +137,18 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T024 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T025 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T025 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
+- [ ] T026 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
+
+### Validation for User Story 3 (MANDATORY)
+
+- [ ] T027 [US3] Add verification script or runbook for the expected mesh behavior in tests/verification/[name].md
 
 ### Implementation for User Story 3
 
-- [ ] T026 [P] [US3] Create [Entity] model in src/models/[entity].py
-- [ ] T027 [US3] Implement [Service] in src/services/[service].py
-- [ ] T028 [US3] Implement [endpoint/feature] in src/[location]/[file].py
+- [ ] T028 [P] [US3] Implement Angular or API changes for the user journey
+- [ ] T029 [P] [US3] Implement Spring Boot service changes for the user journey
+- [ ] T030 [US3] Add Kubernetes and Istio changes for the story
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -156,6 +168,7 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/
 - [ ] TXXX Security hardening
 - [ ] TXXX Run quickstart.md validation
+- [ ] TXXX Re-run mesh verification checks and capture evidence
 
 ---
 

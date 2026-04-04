@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loan-application-service
+  namespace: loan-mesh
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: application-service
+  template:
+    metadata:
+      labels:
+        app: application-service  
+    spec:
+      containers:
+        - name: application-service
+          image: loan/application-service:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8081
+

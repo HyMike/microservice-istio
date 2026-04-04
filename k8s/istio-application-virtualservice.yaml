@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: loan-application-routing
+  namespace: loan-mesh
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - loan-mesh-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /api/loan-applications
+    route:
+    - destination:
+        host: loan-application-service
+        port:
+          number: 8081

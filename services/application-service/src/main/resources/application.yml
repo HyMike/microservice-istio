@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:h2:mem:appdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+underwriting:
+  base-url: http://loan-underwriting-service:8082
+  routing:
+    simulation: auto
+    alternate-weight: 20

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loan-underwriting-service
+  namespace: loan-mesh
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: underwriting-service
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: underwriting-service
+        version: v1
+    spec:
+      containers:
+        - name: underwriting-service
+          image: loan/underwriting-service:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8082   
