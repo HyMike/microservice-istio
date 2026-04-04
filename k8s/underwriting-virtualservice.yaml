@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: underwriting-routing
+  namespace: loan-mesh
+spec:
+  hosts:
+  - loan-underwriting-service
+  http:
+  - route:
+    - destination:
+        host: loan-underwriting-service
+        subset: v1
+        port:
+          number: 8082
+      weight: 80
+    - destination:
+        host: loan-underwriting-service
+        subset: v2
+        port:
+          number: 8082
+      weight: 20

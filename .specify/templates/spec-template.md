@@ -11,6 +11,11 @@
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.
+<<<<<<< HEAD
+=======
+  For this repository, each story must also identify the mesh capability being taught
+  and the verification signal that proves the behavior changed.
+>>>>>>> 001-loan-mesh-app
   
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
@@ -24,10 +29,20 @@
 
 [Describe this user journey in plain language]
 
+<<<<<<< HEAD
+=======
+**Istio/Kubernetes Capability**: [Name the mesh or platform capability this story teaches]
+
+>>>>>>> 001-loan-mesh-app
 **Why this priority**: [Explain the value and why it has this priority level]
 
 **Independent Test**: [Describe how this can be tested independently - e.g., "Can be fully tested by [specific action] and delivers [specific value]"]
 
+<<<<<<< HEAD
+=======
+**Verification Signal**: [Observable proof such as curl output, gateway response, Kiali graph, metric, or trace]
+
+>>>>>>> 001-loan-mesh-app
 **Acceptance Scenarios**:
 
 1. **Given** [initial state], **When** [action], **Then** [expected outcome]
@@ -39,10 +54,20 @@
 
 [Describe this user journey in plain language]
 
+<<<<<<< HEAD
+=======
+**Istio/Kubernetes Capability**: [Name the mesh or platform capability this story teaches]
+
+>>>>>>> 001-loan-mesh-app
 **Why this priority**: [Explain the value and why it has this priority level]
 
 **Independent Test**: [Describe how this can be tested independently]
 
+<<<<<<< HEAD
+=======
+**Verification Signal**: [Observable proof such as curl output, gateway response, Kiali graph, metric, or trace]
+
+>>>>>>> 001-loan-mesh-app
 **Acceptance Scenarios**:
 
 1. **Given** [initial state], **When** [action], **Then** [expected outcome]
@@ -53,10 +78,20 @@
 
 [Describe this user journey in plain language]
 
+<<<<<<< HEAD
+=======
+**Istio/Kubernetes Capability**: [Name the mesh or platform capability this story teaches]
+
+>>>>>>> 001-loan-mesh-app
 **Why this priority**: [Explain the value and why it has this priority level]
 
 **Independent Test**: [Describe how this can be tested independently]
 
+<<<<<<< HEAD
+=======
+**Verification Signal**: [Observable proof such as curl output, gateway response, Kiali graph, metric, or trace]
+
+>>>>>>> 001-loan-mesh-app
 **Acceptance Scenarios**:
 
 1. **Given** [initial state], **When** [action], **Then** [expected outcome]
@@ -90,6 +125,16 @@
 - **FR-004**: System MUST [data requirement, e.g., "persist user preferences"]
 - **FR-005**: System MUST [behavior, e.g., "log all security events"]
 
+<<<<<<< HEAD
+=======
+### Mesh Learning Requirements
+
+- **MLR-001**: Each externally reachable user flow MUST identify the ingress path and internal service hops.
+- **MLR-002**: Each story that changes mesh behavior MUST name the Istio resources or policies involved.
+- **MLR-003**: Each story MUST define at least one observable verification signal.
+- **MLR-004**: Sample data MUST remain synthetic and non-sensitive.
+
+>>>>>>> 001-loan-mesh-app
 *Example of marking unclear requirements:*
 
 - **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
