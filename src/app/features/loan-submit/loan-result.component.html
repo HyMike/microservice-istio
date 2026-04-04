@@ -1,0 +1,34 @@
+<section class="card result-card">
+  <h2>Submission Result</h2>
+
+  <ng-container *ngIf="result; else emptyState">
+    <dl class="result-grid">
+      <div>
+        <dt>Application ID</dt>
+        <dd>{{ result.applicationId }}</dd>
+      </div>
+      <div>
+        <dt>Status</dt>
+        <dd>{{ result.status }}</dd>
+      </div>
+      <div>
+        <dt>Decision Outcome</dt>
+        <dd>{{ result.decisionOutcome }}</dd>
+      </div>
+      <div>
+        <dt>Decision Source</dt>
+        <dd>{{ result.decisionSource }}</dd>
+      </div>
+      <div class="full-width">
+        <dt>Decision Reason</dt>
+        <dd>{{ result.decisionReason }}</dd>
+      </div>
+    </dl>
+  </ng-container>
+
+  <ng-template #emptyState>
+    <p class="helper-text">
+      Submit the form to see the business response returned by `application-service`.
+    </p>
+  </ng-template>
+</section>

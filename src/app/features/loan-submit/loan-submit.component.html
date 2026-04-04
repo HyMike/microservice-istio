@@ -1,0 +1,83 @@
+<div class="page-shell">
+  <section class="card hero-card">
+    <p class="eyebrow">Istio learning lab</p>
+    <h1>Loan Portal</h1>
+    <p>
+      Submit a synthetic loan application through the frontend. The request is sent to
+      <code>POST /api/loan-applications</code> and forwarded by your Istio gateway to
+      <code>loan-application-service</code>.
+    </p>
+  </section>
+
+  <section class="card">
+    <form #loanForm="ngForm" class="loan-form" (ngSubmit)="submit()">
+      <label>
+        Applicant name
+        <input
+          type="text"
+          name="applicantName"
+          [(ngModel)]="form.applicantName"
+          required
+          placeholder="Mike"
+        />
+      </label>
+
+      <div class="two-column-grid">
+        <label>
+          Loan amount
+          <input
+            type="number"
+            name="loanAmount"
+            [(ngModel)]="form.loanAmount"
+            min="1000"
+            required
+          />
+        </label>
+
+        <label>
+          Requested term (months)
+          <input
+            type="number"
+            name="requestedTermMonths"
+            [(ngModel)]="form.requestedTermMonths"
+            min="6"
+            required
+          />
+        </label>
+      </div>
+
+      <label>
+        Loan purpose
+        <input
+          type="text"
+          name="loanPurpose"
+          [(ngModel)]="form.loanPurpose"
+          required
+          placeholder="home-improvement"
+        />
+      </label>
+
+      <label>
+        Route preference
+        <select name="routePreference" [(ngModel)]="form.routePreference">
+          <option value="auto">auto</option>
+          <option value="primary">primary</option>
+          <option value="alternate">alternate</option>
+        </select>
+      </label>
+
+      <button type="submit" [disabled]="loanForm.invalid || submitting">
+        {{ submitting ? 'Submitting...' : 'Submit loan application' }}
+      </button>
+    </form>
+
+    <p class="helper-text">
+      Local development uses the Angular dev proxy, which forwards <code>/api</code> to your
+      Istio gateway on <code>http://localhost:8080</code>.
+    </p>
+
+    <p *ngIf="errorMessage" class="error-banner">{{ errorMessage }}</p>
+  </section>
+
+  <app-loan-result [result]="result ?? null"></app-loan-result>
+</div>
