@@ -1,5 +1,10 @@
 pipeline {
     agent any 
+
+    tools {
+        maven 'Maven 3.9.14'
+        nodejs 'NodeJS 20.20.2'
+    }
     
     environment {
         DOCKERHUB_REPO = "loanmicroservicesistio"
